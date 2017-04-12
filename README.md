@@ -12,7 +12,7 @@ I uploaded two versions: one(CrawlerLocalFiles) is only outputing jpg files, one
 I included a fat jar(local files output) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`, or crawled all the links follows the domain: https://pixabay.com/en/ (I have no idea how long it gonna take). 
 
 
-## Side Nodes of the pixabay.com
+## Side Nodes of the target
 
 pixabay.com offers 4 sizes/tiers of images:
 
