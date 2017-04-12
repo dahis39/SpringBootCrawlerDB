@@ -1,10 +1,10 @@
 # Java Crawler Setup
 
-A Spring Boot web crawler setup/example, including:  crawler4j for crawling, Jsoup for parsing, Spring Data JPA for ORM (Hibernate), PostgresDB and/or direct files output as persistence.
+A Spring Boot web crawler setup/example, including:  crawler4j for crawling, Jsoup for parsing, Spring Data JPA for ORM (Hibernate), PostgreSQL and/or direct files output as persistence.
 
 It's a convenience setup that I configurated, so you can save some time. It will be crawling [pixabay.com](https://pixabay.com/) 800~p beautiful images as a working example.
 
-I uploaded two versions: one(CrawlerLocalFiles) is only outputing jpg files, one(CrawlerWithDB) is doing both outputing files and saving image entities to a PostgresDB.
+I uploaded two versions: one(CrawlerLocalFiles) is only outputing jpg files, one(CrawlerWithDB) is doing both outputing files and saving image entities to a PostgreSQL.
 
 
 # Quick Installation
