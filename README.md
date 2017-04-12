@@ -33,6 +33,10 @@ Crawler4j doesn't crawl links in HTML attribute srcset, so I prase it with Jsoup
 
 [Tom H](http://www.saturnringstation.com/portfolio)
 
+## Usage
+
+Education only
+
 ## License
 
 The MIT License
