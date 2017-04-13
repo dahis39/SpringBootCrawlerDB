@@ -1,5 +1,7 @@
 # Java Crawler Setup
 
+Keywords: Crawler4j, Jsoup, Spring Boot, Spring Data JPA, PostgreSQL, Multithreading, Single client, Image crawler.
+
 A Spring Boot web crawler setup/example, including:  crawler4j for crawling, Jsoup for parsing, Spring Data JPA for ORM (Hibernate), PostgreSQL and direct files output as persistence.
 
 It's a convenience setup that I configurated, so you can save some time. It will be crawling [pixabay.com](https://pixabay.com/) 800~p beautiful images as a working example.
