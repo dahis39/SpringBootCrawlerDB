@@ -8,9 +8,9 @@ It's a convenience setup that I configured, so you can save some time. It will b
 
 I uploaded two versions: 
 
-**CrawlerLocalFiles** stores local image files in a folder.
+**CrawlerLocalFiles**: stores local image files in a folder.
 
-**CrawlerWithDB** is the features rich one that has three output modes: stores with local files, stores with a PostgreSQL DB, or does both. All set by one keyword in the application.properties.
+**CrawlerWithDB**: is the features rich one that has three output modes: stores with local files, stores with a PostgreSQL DB, or does both. All set by one keyword in the application.properties.
 
 
 # Quick Installation
