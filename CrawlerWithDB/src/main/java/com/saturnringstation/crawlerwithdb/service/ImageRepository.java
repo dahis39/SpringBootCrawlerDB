@@ -1,5 +1,6 @@
-package com.saturnringstation.crawlerwithdb;
+package com.saturnringstation.crawlerwithdb.service;
 
+import com.saturnringstation.crawlerwithdb.ImageEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**

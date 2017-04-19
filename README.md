@@ -1,17 +1,21 @@
 # Java Crawler Setup
 
-**Keywords**: Crawler4j, Jsoup, Spring Boot, Spring Data JPA, PostgreSQL, Multithreading, Single client, Image crawler.
+**Keywords**: Crawler4j, Jsoup, Spring Boot, Spring Data JPA, PostgreSQL, Multi-threading, Single client, Image crawler.
 
 A Spring Boot web crawler setup/example, including:  crawler4j for crawling, Jsoup for parsing, Spring Data JPA for ORM (Hibernate), PostgreSQL and direct files output as persistence.
 
-It's a convenience setup that I configurated, so you can save some time. It will be crawling [pixabay.com](https://pixabay.com/) 800~p beautiful images as a working example.
+It's a convenience setup that I configured, so you can save some time. It will be crawling [pixabay.com](https://pixabay.com/) 800~p beautiful images as a working example.
 
-I uploaded two versions: one(CrawlerLocalFiles) is only outputing jpg files, one(CrawlerWithDB) is doing both outputing files and saving image entities to a PostgreSQL DB.
+I uploaded two versions: 
+
+**CrawlerLocalFiles** stores local image files in a folder.
+
+**CrawlerWithDB** is the features rich one that has three output modes: stores with local files, stores with a PostgreSQL DB, or does both. All set by one keyword in the application.properties.
 
 
 # Quick Installation
 
-I included a fat jar(local files output) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`, or crawled all the links follows the domain: https://pixabay.com/en/ (I have no idea how long it gonna take). 
+I included a fat jar(CrawlerLocalFiles) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`, or crawled all the links follows the domain: https://pixabay.com/en/ (I have no idea how long it gonna take). 
 
 
 ## Side Nodes of the target

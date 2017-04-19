@@ -1,19 +1,16 @@
 package com.saturnringstation.crawlerwithdb;
 
+import com.saturnringstation.crawlerwithdb.service.PersistenceService;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.BinaryParseData;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
-import org.hibernate.HibernateError;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,10 +22,10 @@ import java.util.regex.Pattern;
 
 public class MyCrawler extends WebCrawler {
 
-    private static ImageRepository imageRepository;
+    private static PersistenceService persistenceService;
 
-    public MyCrawler(ImageRepository imageRepository) {
-        this.imageRepository = imageRepository;
+    public MyCrawler(PersistenceService persistenceService) {
+        this.persistenceService = persistenceService;
     }
 
     private static final Pattern FILTERS = Pattern.compile(
@@ -37,7 +34,7 @@ public class MyCrawler extends WebCrawler {
     private static final Pattern imgPatterns = Pattern.compile(".*\\.jpg$");
     private static final Pattern srcsetPatterns = Pattern.compile("(https):\\/\\/cdn.pixabay.com\\/photo(.*?)\\.jpg");
 
-    private static File storageFolder;
+    public static File storageFolder;
     private static String[] crawlDomains;
 
     public static void configure(String[] domain, String storageFolderName) {
@@ -92,36 +89,9 @@ public class MyCrawler extends WebCrawler {
         // If it's the targeted images, store them.
         } else if ( imgPatterns.matcher(url).matches() && page.getParseData() instanceof BinaryParseData) {
             if (page.getContentData().length > (100 * 1024) ) {
-                storeImageToLocalFile(url, page.getContentData());
-                storeImageToDatabase(url, page.getContentData());
+
+                persistenceService.saveImage(url, page.getContentData());
             }
-        }
-    }
-
-    private void storeImageToDatabase (String url, byte[] imageBytes) {
-        String nameWithExtension = url.substring(url.lastIndexOf('/') + 1);
-
-        ImageEntity newImageObj = new ImageEntity();
-        newImageObj.setFileName(nameWithExtension);
-        newImageObj.setUrl(url);
-        newImageObj.setImage(imageBytes);
-
-        try {
-            ImageEntity returnImageObj = imageRepository.save(newImageObj);
-            logger.info("Stored in DB, ID:" + returnImageObj.getFileName());
-        } catch (HibernateError error) {
-            logger.error("Failed to insert:" + newImageObj.getFileName(), error);
-        }
-    }
-
-    private void storeImageToLocalFile(String url, byte[] imageBytes) {
-        String nameWithExtension = url.substring(url.lastIndexOf('/') + 1);
-        String filename = storageFolder.getAbsolutePath() + "/" + nameWithExtension;
-        try {
-            Files.write(Paths.get(filename) , imageBytes);
-            logger.info("Stored in file: {}", url);
-        } catch (IOException iox) {
-            logger.error("Failed to write file: " + filename, iox);
         }
     }
 }

@@ -1,13 +1,18 @@
 package com.saturnringstation.crawlerwithdb;
 
+import com.saturnringstation.crawlerwithdb.service.PersistenceService;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * Created by tom on 4/11/2017.
@@ -15,12 +20,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
 
-    @Autowired
-    ImageRepository imageRepository;
+    @Resource(name = "${spring.profiles.active}")
+    PersistenceService persistenceService;
 
     @Override
     public void run(String... args) throws Exception {
-        String[] crawlDomains = {"https://pixabay.com/en/"};
+        String[] crawlDomains = {"https://pixabay.com/en/", "https://cdn.pixabay.com/photo/"};
         String crawlStorageFolder = "./images";
         int numberOfCrawlers = 10;
 
@@ -41,7 +46,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         }
 
         MyCrawler.configure(crawlDomains, crawlStorageFolder);
-        MyCrawlerFactory factory = new MyCrawlerFactory(imageRepository);
+        MyCrawlerFactory factory = new MyCrawlerFactory(persistenceService);
         controller.startNonBlocking(factory, numberOfCrawlers);
     }
 }

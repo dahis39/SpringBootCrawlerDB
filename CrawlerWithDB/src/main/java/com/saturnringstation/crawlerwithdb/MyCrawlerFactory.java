@@ -1,5 +1,6 @@
 package com.saturnringstation.crawlerwithdb;
 
+import com.saturnringstation.crawlerwithdb.service.PersistenceService;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 
@@ -8,14 +9,14 @@ import edu.uci.ics.crawler4j.crawler.WebCrawler;
  */
 public class MyCrawlerFactory implements CrawlController.WebCrawlerFactory {
 
-    ImageRepository imageRepository;
+    PersistenceService persistenceService;
 
-    public MyCrawlerFactory(ImageRepository imageRepository) {
-        this.imageRepository = imageRepository;
+    public MyCrawlerFactory(PersistenceService persistenceService) {
+        this.persistenceService = persistenceService;
     }
 
     @Override
     public WebCrawler newInstance() throws Exception {
-        return new MyCrawler(imageRepository);
+        return new MyCrawler(persistenceService);
     }
 }
