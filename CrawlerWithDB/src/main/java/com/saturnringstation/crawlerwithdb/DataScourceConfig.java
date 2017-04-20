@@ -69,7 +69,6 @@ public class DataScourceConfig {
         factoryBean.setPackagesToScan("com.saturnringstation.crawlerwithdb");
 
         factoryBean.setJpaVendorAdapter(vendorAdapter);
-        factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setJpaProperties(additionalProperties());
 
         return factoryBean;
