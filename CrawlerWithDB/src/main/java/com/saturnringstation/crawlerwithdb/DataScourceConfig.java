@@ -77,7 +77,6 @@ public class DataScourceConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
-//        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         return properties;
     }
 }
