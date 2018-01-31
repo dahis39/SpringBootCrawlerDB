@@ -13,9 +13,9 @@ I uploaded two versions:
 **CrawlerWithDB**: this one can switch between three output modes: stores as local files, stores into PostgreSQL or does both. It's set by a keyword in the application.properties.
 
 
-# Quick Installation
+# Quick Example
 
-I included a fat jar(CrawlerLocalFiles) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`, or crawled all the links follows the domain: https://pixabay.com/en/ (I have no idea how long it gonna take). 
+I included a fat jar(CrawlerLocalFiles) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`. If not it will crawled all the links within the URL: https://pixabay.com/en/ (Don't do it).
 
 
 ## Side Node for pixabay.com
