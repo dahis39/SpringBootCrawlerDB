@@ -15,7 +15,7 @@ I uploaded two versions:
 
 # Quick Example
 
-I included a fat jar(CrawlerLocalFiles) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`. If not it will crawled all the links within the URL: https://pixabay.com/en/ (Don't do it).
+I included a fat jar(CrawlerLocalFiles) at the top level folder. Download it, you will need Java 8 jre, run `java -jar CrawlerLocalFiles.jar` in command line. You gonna see links flying through. A new folder named `images` will appears with freshly crawled jpgs in it. It will keep working till you hit exit `ctrl + c`. If not it will crawl all the links within the URL: https://pixabay.com/en/ (Don't do it).
 
 
 ## Side Node for pixabay.com
